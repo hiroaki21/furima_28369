@@ -67,20 +67,6 @@ Things you may want to cover:
 | building             | string          |                                |
 | tel_num              | integer         | null: false                    |
 | user_id              | references      | null: false, foreign_key: true |
-| card_id              | references      | null: false, foreign_key: true |
 
 ### Association
 - has_one :item
-- has_one :card
-
-## cards テーブル
-
-| Column        | Type       | Options                        |
-| ------------- |  --------- | ------------------------------ |
-| card_num      | integer    | null: false                    |
-| exp_year      | integer    | null: false                    |
-| exp_month     | integer    | null: false                    |
-| sec_num       | integer    | null: false                    |
-
-### Association
-- belongs_to :customer
