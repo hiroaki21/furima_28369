@@ -61,13 +61,23 @@ Things you may want to cover:
 
 | Column               | Type            | Options                        |
 | -------------------  | --------------- | ------------------------------ |
+| item                 | references      | null: false, foreign_key: true |
+| address              | references      | null: false, foreign_key: true |
+
+### Association
+- has_one :item
+- has_one :address
+
+## addresses テーブル
+
+| Column               | Type            | Options                        |
+| -------------------  | --------------- | ------------------------------ |
 | postal_num           | string          | null: false                    |
 | pref_id              | integer         | null: false                    |
 | city                 | string          | null: false                    |
 | house_num            | string          | null: false                    |
 | building             | string          |                                |
 | tel_num              | integer         | null: false                    |
-| item                 | references      | null: false, foreign_key: true |
 
 ### Association
-- has_one :item
+- belongs_to :customer
