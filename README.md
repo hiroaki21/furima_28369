@@ -55,17 +55,6 @@ Things you may want to cover:
 
 ### Association
 - belongs-to :trade
-- belongs_to :customer
-
-## customers テーブル
-
-| Column               | Type            | Options                        |
-| -------------------  | --------------- | ------------------------------ |
-| item                 | references      | null: false, foreign_key: true |
-| address              | references      | null: false, foreign_key: true |
-
-### Association
-- has_one :item
 - has_one :address
 
 ## trades テーブル
@@ -92,4 +81,4 @@ Things you may want to cover:
 | tel_num              | string          | null: false                    |
 
 ### Association
-- belongs_to :customer
+- belongs_to :item
