@@ -89,7 +89,7 @@ Things you may want to cover:
 | city                 | string          | null: false                    |
 | house_num            | string          | null: false                    |
 | building             | string          |                                |
-| tel_num              | integer         | null: false                    |
+| tel_num              | string          | null: false                    |
 
 ### Association
 - belongs_to :customer
