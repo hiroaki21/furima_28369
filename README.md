@@ -41,16 +41,17 @@ Things you may want to cover:
 
 ## items テーブル
 
-| Column            | Type              | Options             |
-| ----------------- | ----------------- | ------------------- |
-| title             | string            | null: false         |
-| introduce         | text              | null: false         |
-| category_id       | integer           | null: false         |
-| status_id         | integer           | null: false         |
-| fee_burden_id     | integer           | null: false         |
-| ship_origin_id    | integer           | null: false         |
-| ship_date_id      | integer           | null: false         |
-| price             | integer           | null: false         |
+| Column            | Type              | Options                        |
+| ----------------- | ----------------- | ------------------------------ |
+| title             | string            | null: false                    |
+| introduce         | text              | null: false                    | 
+| category_id       | integer           | null: false                    |
+| status_id         | integer           | null: false                    |
+| fee_burden_id     | integer           | null: false                    |
+| ship_origin_id    | integer           | null: false                    |
+| ship_date_id      | integer           | null: false                    |
+| price             | integer           | null: false                    |
+| user              | references        | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
