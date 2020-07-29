@@ -68,6 +68,18 @@ Things you may want to cover:
 - has_one :item
 - has_one :address
 
+## trades テーブル
+
+| Column               | Type            | Options                        |
+| -------------------  | --------------- | ------------------------------ |
+| item                 | references      | null: false, foreign_key: true |
+| user                 | references      | null: false, foreign_key: true |
+| customer             | references      | null: false, foreign_key: true |
+
+
+### Association
+- has_one :item
+
 ## addresses テーブル
 
 | Column               | Type            | Options                        |
