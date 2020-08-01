@@ -37,6 +37,7 @@ Things you may want to cover:
 | birth_date        | date              | null: false             |
 
 ### Association
+- has_many :items
 - has_many :trades
 
 ## items テーブル
@@ -54,8 +55,8 @@ Things you may want to cover:
 | user              | references        | null: false, foreign_key: true |
 
 ### Association
-- belongs-to :trade
-- has_one :address
+- has_one :trade
+- belongs-to :user
 
 ## trades テーブル
 
@@ -63,11 +64,13 @@ Things you may want to cover:
 | -------------------  | --------------- | ------------------------------ |
 | item                 | references      | null: false, foreign_key: true |
 | user                 | references      | null: false, foreign_key: true |
-| customer             | references      | null: false, foreign_key: true |
+| address              | references      | null: false, foreign_key: true |
+
 
 ### Association
-- has_one :item
+- belongs-to :item
 - belongs_to :user
+- belongs_to :address
 
 ## addresses テーブル
 
@@ -81,4 +84,4 @@ Things you may want to cover:
 | tel_num              | string          | null: false                    |
 
 ### Association
-- belongs_to :item
+- has_one :trade
