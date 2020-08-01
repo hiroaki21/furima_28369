@@ -53,10 +53,12 @@ Things you may want to cover:
 | ship_date_id      | integer           | null: false                    |
 | price             | integer           | null: false                    |
 | user              | references        | null: false, foreign_key: true |
+| address           | references        | foreign_key: true              |
 
 ### Association
 - has_one :trade
 - belongs_to :user
+- belongs_to :address
 
 ## trades テーブル
 
@@ -81,4 +83,4 @@ Things you may want to cover:
 | tel_num              | string          | null: false                    |
 
 ### Association
-- has_one :trade
+- has_one :item
