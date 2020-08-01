@@ -53,12 +53,11 @@ Things you may want to cover:
 | ship_date_id      | integer           | null: false                    |
 | price             | integer           | null: false                    |
 | user              | references        | null: false, foreign_key: true |
-| address           | references        | foreign_key: true              |
 
 ### Association
 - has_one :trade
 - belongs_to :user
-- belongs_to :address
+- has_one :address
 
 ## trades テーブル
 
@@ -81,6 +80,7 @@ Things you may want to cover:
 | house_num            | string          | null: false                    |
 | building             | string          |                                |
 | tel_num              | string          | null: false                    |
+| item                 | references      | null: false, foreign_key: true |
 
 ### Association
-- has_one :item
+- belongs_to :item
