@@ -64,13 +64,10 @@ Things you may want to cover:
 | -------------------  | --------------- | ------------------------------ |
 | item                 | references      | null: false, foreign_key: true |
 | user                 | references      | null: false, foreign_key: true |
-| address              | references      | null: false, foreign_key: true |
-
 
 ### Association
 - belongs_to :item
 - belongs_to :user
-- belongs_to :address
 
 ## addresses テーブル
 
