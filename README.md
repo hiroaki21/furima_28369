@@ -38,7 +38,7 @@ Things you may want to cover:
 
 ### Association
 - has_many :items
-- has_many :trades
+- has_many :transactions
 
 ## items テーブル
 
@@ -55,11 +55,11 @@ Things you may want to cover:
 | user              | references        | null: false, foreign_key: true |
 
 ### Association
-- has_one :trade
+- has_one :transaction
 - belongs_to :user
 - has_one :address
 
-## trades テーブル
+## transactions テーブル
 
 | Column               | Type            | Options                        |
 | -------------------  | --------------- | ------------------------------ |
