@@ -6,7 +6,8 @@ class Item < ApplicationRecord
   belongs_to_active_hash :ship_origin
   belongs_to_active_hash :ship_date
 
-  has_one :transaction
+  
+  has_one :deal, class_name: "Transaction"
   belongs_to :user
   has_one :address
 
