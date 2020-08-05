@@ -10,6 +10,7 @@ class Item < ApplicationRecord
   has_one :deal, class_name: "Transaction"
   belongs_to :user
   has_one :address
+  has_one_attached :image
 
   
 end
