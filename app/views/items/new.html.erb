@@ -55,7 +55,7 @@
           商品の状態
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:status, Status.all, :id, :name, {}, {class:"select-box", id:"item-sales-status"}) %>
+        <%= f.collection_select(:status_id, Status.all, :id, :name, {}, {class:"select-box", id:"item-sales-status"}) %>
       </div>
     </div>
     <%# /商品の詳細 %>
@@ -71,17 +71,17 @@
           配送料の負担
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:fee_burden, FeeBurden.all, :id, :name, {}, {class:"select-box", id:"item-shipping-fee-status"}) %>
+        <%= f.collection_select(:fee_burden_id, FeeBurden.all, :id, :name, {}, {class:"select-box", id:"item-shipping-fee-status"}) %>
         <div class="weight-bold-text">
           発送元の地域
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:ship_origin, ShipOrigin.all, :id, :name, {}, {class:"select-box", id:"item-prefecture"}) %>
+        <%= f.collection_select(:ship_origin_id, ShipOrigin.all, :id, :name, {}, {class:"select-box", id:"item-prefecture"}) %>
         <div class="weight-bold-text">
           発送までの日数
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:ship_date, ShipDate.all, :id, :name, {}, {class:"select-box", id:"item-scheduled-delivery"}) %>
+        <%= f.collection_select(:ship_date_id, ShipDate.all, :id, :name, {}, {class:"select-box", id:"item-scheduled-delivery"}) %>
       </div>
     </div>
     <%# /配送について %>
@@ -99,12 +99,12 @@
             <span class="indispensable">必須</span>
           </div>
           <span class="sell-yen">¥</span>
-          <%= f.text_field :price, class:"price-input", id:"item-price", placeholder:"例）300" %>
+          <%= f.text_field :price, class:"price-input", id:"price", placeholder:"例）300" %>
         </div>
         <div class="price-content">
           <span>販売手数料 (10%)</span>
           <span>
-            <span id='add-tax-price'></span>円
+            <span id='tax'></span>円
           </span>
         </div>
         <div class="price-content">
@@ -157,3 +157,23 @@
     </p>
   </footer>
 </div>
+
+<script type="text/javascript">
+  $('#price').change(function(){
+    var p=$("#price").val();
+    var pri=parseInt(p);
+    var tax=Math.trunc(pri * 0.1);
+    var pro=pri - tax;
+
+    var pattern =	/^[1-9][0-9]*$/;
+    if (pattern.test(p)){
+      taxx=tax.toLocaleString()
+      prox=pro.toLocaleString()
+      $('#tax').text(taxx);
+      $('#profit').text(prox);
+    }else{
+      $('#tax').text("半角数字のみ入力可能");
+      $('#profit').text("半角数字のみ入力可能");
+    }
+  });
+</script>
