@@ -7,8 +7,8 @@ RSpec.describe Item, type: :model do
       @item.image = fixture_file_upload('public/images/test_image.png')
     end
 
-    it 'ログインしていなければ、出品画面にいけない' do
-      
+    it '全ての項目が存在すれば登録できること' do
+      expect(@item).to be_valid
     end
 
     it 'titleが空では保存できないこと' do
@@ -31,16 +31,30 @@ RSpec.describe Item, type: :model do
 
     it 'カテゴリが1では保存できないこと' do
       @item.category_id = 1
-      @item.status_id = 1 
-      @item.fee_burden_id = 1 
-      @item.ship_origin_id = 1 
-      @item.ship_date_id = 1 
+      @item.status_id = 1
+      @item.fee_burden_id = 1
+      @item.ship_origin_id = 1
+      @item.ship_date_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Category Select",
-              "Status Select",
-              "Fee burden Select",
-              "Ship origin Select",
-              "Ship date Select")
+      expect(@item.errors.full_messages).to include('Category Select',
+                                                    'Status Select',
+                                                    'Fee burden Select',
+                                                    'Ship origin Select',
+                                                    'Ship date Select')
+    end
+
+    it 'カテゴリが空では保存できないこと' do
+      @item.category_id = nil
+      @item.status_id = nil
+      @item.fee_burden_id = nil
+      @item.ship_origin_id = nil
+      @item.ship_date_id = nil
+      @item.valid?
+      expect(@item.errors.full_messages).to include('Category Select',
+                                                    'Status Select',
+                                                    'Fee burden Select',
+                                                    'Ship origin Select',
+                                                    'Ship date Select')
     end
 
     it 'priceが空では保存できないこと' do
@@ -52,20 +66,19 @@ RSpec.describe Item, type: :model do
     it 'priceが300以下では保存できないこと' do
       @item.price = 288
       @item.valid?
-      expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
+      expect(@item.errors.full_messages).to include('Price must be greater than or equal to 300')
     end
 
     it 'priceが9999999より大きくては保存できないこと' do
-      @item.price = 100000000
+      @item.price = 100_000_000
       @item.valid?
-      expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
+      expect(@item.errors.full_messages).to include('Price must be less than or equal to 9999999')
     end
 
     it 'priceが数字以外では保存できないこと' do
-      @item.price = "7.f"
+      @item.price = '7.f'
       @item.valid?
-      expect(@item.errors.full_messages).to include("Price is not a number")
+      expect(@item.errors.full_messages).to include('Price is not a number')
     end
-
   end
 end

@@ -1,12 +1,13 @@
 FactoryBot.define do
   factory :item do
-    title                     { Faker::Name.name }
-    introduce                 { Faker::Lorem.sentence}
-    category_id               { Faker::Number.within(range: 2..11)}
-    status_id                 { Faker::Number.within(range: 2..7)}
-    fee_burden_id             { Faker::Number.within(range: 2..3) }
-    ship_origin_id            { Faker::Number.within(range: 2..48) }
-    ship_date_id              { Faker::Number.within(range: 2..4) }
-    price                     { Faker::Number.within(range: 300..9999999) }
+    title                     { 'title' }
+    introduce                 { 'hfaksg' }
+    category_id               { '3' }
+    status_id                 { '4' }
+    fee_burden_id             { '2' }
+    ship_origin_id            { '13' }
+    ship_date_id              { '3' }
+    price                     { '32233' }
+    association :user
   end
 end
