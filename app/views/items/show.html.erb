@@ -8,13 +8,11 @@
     </h2>
     <div class='item-img-content'>
       <%= image_tag @item.image ,class:"item-box-img" %>
-      <%# 商品が売れている場合は、sould outの表示をしましょう。 %>
       <%if @item.deal.present?%>
         <div class='sold-out'>
           <span>Sold Out!!</span>
         </div>
       <%end%>
-      <%# //商品が売れている場合は、sould outの表示をしましょう。 %>
     </div>
     <div class="item-price-box">
       <span class="item-price">
@@ -24,14 +22,13 @@
         (税込) 送料込み
       </span>
     </div>
-
-    <% if signed_in? && current_user=@item.user%>
+    <% if user_signed_in? && current_user.id==@item.user_id%>
       <%= link_to '商品の編集', "items/edit", method: :get, class: "item-red-btn" %>
       <p class='or-text'>or</p>
       <%= link_to '削除', "#", method: :delete, class:'item-destroy' %>
     <% else%>
       <% unless @item.deal.present?%>
-        <%= link_to '購入画面に進む', "#" ,class:"item-red-btn"%>
+        <%= link_to '購入画面に進む', item_transactions_path(@item.id) ,class:"item-red-btn"%>
       <% end%>
     <% end%>
 
