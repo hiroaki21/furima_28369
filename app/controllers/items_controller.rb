@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_login, only: [:new]
   def index
-    @items=Item.all
+    @items = Item.all
   end
 
   def new
