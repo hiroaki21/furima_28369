@@ -6,6 +6,8 @@ class Item < ApplicationRecord
   belongs_to_active_hash :ship_origin
   belongs_to_active_hash :ship_date
 
+  default_scope -> { order(created_at: :desc) }
+
   has_one :deal, class_name: 'Transaction'
   belongs_to :user
   has_one :address
