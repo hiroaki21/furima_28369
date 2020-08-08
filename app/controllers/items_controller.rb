@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_login, only: [:new]
+  before_action :search_item, only: [:show]
+
   def index
     @items = Item.all
   end
@@ -17,6 +19,9 @@ class ItemsController < ApplicationController
     end
   end
 
+  def show
+  end
+
   private
 
   def item_params
@@ -30,5 +35,9 @@ class ItemsController < ApplicationController
       flash[:alert] = 'You need to sign in or sign up before continuing.'
       redirect_to '/users/sign_in'
     end
+  end
+
+  def search_item
+    @item = Item.find(params[:id])
   end
 end
