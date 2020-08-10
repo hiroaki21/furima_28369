@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :set_login, only: [:new]
-  before_action :search_item, only: [:show, :edit, :update]
+  before_action :set_login, only: [:new,:edit,:update,:create,:destroy]
+  before_action :search_item, only: [:show, :edit, :update,:destroy]
 
   def index
     @items = Item.all
@@ -31,6 +31,11 @@ class ItemsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @item.destroy
+    redirect_to :root
   end
 
   private
