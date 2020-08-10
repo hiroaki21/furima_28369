@@ -1,6 +1,9 @@
 class TransactionsController < ApplicationController
   before_action :set_login, only: [:index]
   def index
+    @transaction = Transaction.new
+    @item = Item.find(params[:item_id])
+    redirect_to :root unless current_user.id != @item.user_id
   end
 
   def set_login
