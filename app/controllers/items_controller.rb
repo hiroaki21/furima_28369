@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_login, only: [:new]
-  before_action :search_item, only: [:show]
+  before_action :search_item, only: [:show,:edit]
 
   def index
     @items = Item.all
@@ -20,6 +20,9 @@ class ItemsController < ApplicationController
   end
 
   def show
+  end
+
+  def edit
   end
 
   private
