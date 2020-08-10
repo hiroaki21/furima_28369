@@ -4,6 +4,7 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.new
     @item = Item.find(params[:item_id])
     redirect_to :root unless current_user.id != @item.user_id
+    redirect_to :root unless @item.deal.blank?
   end
 
   def set_login
