@@ -7,6 +7,9 @@ class TransactionsController < ApplicationController
     redirect_to :root unless @item.deal.blank?
   end
 
+  def create
+  end
+
   def set_login
     unless user_signed_in?
       flash[:alert] = 'You need to sign in or sign up before continuing.'
