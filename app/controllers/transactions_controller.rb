@@ -29,7 +29,7 @@ class TransactionsController < ApplicationController
 
   private
   def transaction_params
-    params.require(:transaction).permit(:token).merge(user_id: current_user.id,item_id:@item.id)
+    params.permit(:token).merge(user_id: current_user.id).merge(item_id:@item.id)
   end
 
   def pay_item
