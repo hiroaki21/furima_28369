@@ -1,5 +1,5 @@
 class TransactionsController < ApplicationController
-  before_action :set_login, only: [:index,:create]
+  before_action :set_login, only: [:index, :create]
 
   def index
     @transaction = BuyerInfo.new
@@ -10,11 +10,11 @@ class TransactionsController < ApplicationController
 
   def create
     @item = Item.find(params[:item_id])
-    @transaction=BuyerInfo.new(transaction_params)
+    @transaction = BuyerInfo.new(transaction_params)
     if @transaction.valid?
       pay_item
       @transaction.save
-      return redirect_to :root
+      redirect_to :root
     else
       render :index
     end
@@ -28,16 +28,17 @@ class TransactionsController < ApplicationController
   end
 
   private
+
   def transaction_params
-    params.require(:buyer_info).permit(:postal_num,:pref_id,:city,:house_num,:building,:tel_num,:item_id).merge(user_id: current_user.id).merge(item_id:@item.id).merge(token:params[:token])
+    params.require(:buyer_info).permit(:postal_num, :pref_id, :city, :house_num, :building, :tel_num, :item_id).merge(user_id: current_user.id).merge(item_id: @item.id).merge(token: params[:token])
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.price,
-      card: params[:token], 
-      currency:'jpy'     
+      card: params[:token],
+      currency: 'jpy'
     )
   end
 end
