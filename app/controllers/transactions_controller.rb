@@ -4,8 +4,7 @@ class TransactionsController < ApplicationController
   def index
     @transaction = BuyerInfo.new
     @item = Item.find(params[:item_id])
-    redirect_to :root unless current_user.id != @item.user_id
-    redirect_to :root unless @item.deal.blank?
+    redirect_to :root unless (current_user.id != @item.user_id) && @item.deal.blank?
   end
 
   def create
