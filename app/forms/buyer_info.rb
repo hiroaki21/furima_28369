@@ -1,13 +1,14 @@
 class BuyerInfo
   include ActiveModel::Model
-  attr_accessor :user_id,:item_id,:postal_num,:pref_id,:city,:house_num,:building,:tel_num
+  attr_accessor :user_id,:item_id,:postal_num,:pref_id,:city,:house_num,:building,:tel_num,:token
 
   with_options presence: true do
-    validates :postal_num
-    validates :pref_id
+    validates :token
+    validates :postal_num,    format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
+    validates :pref_id,       numericality: { other_than: 1, message: 'Select' }
     validates :city
     validates :house_num
-    validates :tel_num
+    validates :tel_num,        numericality:{ only_integer: true,message: "is number"}
   end
 
   def save

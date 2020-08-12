@@ -14,9 +14,9 @@ class TransactionsController < ApplicationController
     if @transaction.valid?
       pay_item
       @transaction.save
-      return redirect_to root_path
+      return redirect_to :root
     else
-      render 'index'
+      render :index
     end
   end
 
@@ -29,7 +29,7 @@ class TransactionsController < ApplicationController
 
   private
   def transaction_params
-    params.require(:buyer_info).permit(:token,:postal_num,:pref_id,:city,:house_num,:building,:tel_num,:item_id).merge(user_id: current_user.id).merge(item_id:@item.id)
+    params.require(:buyer_info).permit(:postal_num,:pref_id,:city,:house_num,:building,:tel_num,:item_id).merge(user_id: current_user.id).merge(item_id:@item.id).merge(token:params[:token])
   end
 
   def pay_item
